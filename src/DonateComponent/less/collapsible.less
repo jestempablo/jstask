@@ -1,0 +1,23 @@
+.collapsible {
+    display:block;
+    overflow: hidden;
+    transition: 500ms;
+    max-height:0;
+    opacity:0.5;
+}
+
+.collapsible-close {
+    display: none;
+}
+
+.collapsible-open:checked {
+    & ~ .collapsible {
+        margin-top:10px;
+        max-height:500px;
+        opacity:1;
+    }
+    & ~ .collapsible-close {
+        display:inline;
+    }
+
+}

@@ -18,10 +18,11 @@
         "style-loader": "^0.23.0",
         "webpack": "^4.17.2",
         "webpack-cli": "^3.1.0",
-        "webpack-dev-server": "^3.1.8"
+        "webpack-dev-server": "^3.1.8",
+        "normalize.css": "^8.0.0"
     },
     "scripts": {
-        "start": "webpack-dev-server --open --mode=development",
+        "start": "webpack-dev-server --open",
         "build": "webpack --config webpack.config.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },

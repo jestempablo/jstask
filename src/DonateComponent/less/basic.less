@@ -1,3 +1,60 @@
+@default-light: #fff;
+@default-dark: #424242;
+@default-gray: #ccc;
+@primary: rgb(5, 190, 29);
+@secondary: rgb(241, 95, 52);
+@blue: rgb(37, 164, 216);
+@red: rgb(182, 27, 27);
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height:100%;
+}
+
+body {
+    height:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .card {
-    background:#c0c;
+    background-color: @default-light;
+    color:@default-dark;
+    border:1px solid @default-gray;
+    border-bottom-width: 2px;
+    padding:0 20px;
+}
+
+
+.block {
+    width:100%;
+    flex-wrap: wrap;
+    &&--type {
+        &-row {
+            @media (min-width:350px){
+                display: flex;
+            }
+            justify-content:space-between;
+            margin-top:10px;
+            margin-bottom:10px;
+        }
+    }
+
+    &&--size {
+        &-half {
+            @media (min-width:350px){
+                width:48%;
+            }
+            @media (max-width:349px){
+                margin-top:5px;
+                &:first-of-type {
+                    margin-top:0;
+                }
+            }
+        }
+    }
 }

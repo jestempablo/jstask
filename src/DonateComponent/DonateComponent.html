@@ -3,19 +3,31 @@
         <p><strong>$443</strong> still needed for this project</p>
     </div>
     <div class="card">
-        <div class="progress progress--color-secondary"></div>
+        <div class="progress progress--color-secondary progress--type-incard">
+            <div class="progress-bar" style="right:calc(100% - (57%/5));"></div>
+        </div>
         <p class="text">
             <strong class="text--color-secondary">Only 3 days left</strong> to fund this project.
         </p>
         <p class="text">
-            Join the <strong>42</strong> other donors who habe already supported this project. Every dollar helps.
+            Join the <strong>42</strong> other donors who have already supported this project. Every dollar helps.
         </p>
-        <form id="giveForm">
-            <input id="numberInput" class="input input--type-half input--feedback-dollar block block--size-half" value="50" placeholder="0" type="phone"/>
-            <button class="button button--color-primary block block--size-half" type="submit"></button>
+        <form id="giveForm" class="block block--type-row">
+            <div class="block block--type-block block--size-half">
+                <input id="numberInput" class="input input--size-lg input--type-half input--feedback-dollar" value="50" placeholder="0" type="phone"/>
+            </div>
+            <div class="block block--type-block block--size-half">
+                <button class="button button--size-lg button--color-primary " type="submit">Give now</button>
+            </div>
+            <div class="block block--type-block block--size-full invalid-feedback" id="validationFeedback"></div>
         </form>
         <p>
-            <a href="#"><i>Why give $50?</i></a>
+            <a href="#"><i><label for="collapsibleOpen" class="pointer">Why give $50?</label></i></a>
+            <input type="radio" class="invisible collapsible-open" id="collapsibleOpen" name="collapsibleTrigger">
+            <label for="collapsibleClose" class="collapsible-close right">
+                <input type="radio" class="invisible" id="collapsibleClose" name="collapsibleTrigger">
+                <strong class="pointer">&times;</strong>
+            </label>
             <span class="collapsible collapsible--state-collapsed">
                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar nibh ac sem mollis malesuada. In vestibulum,
                 odio et tristique finibus, ipsum enim cursus enim, sed pellentesque elit lorem eget felis.
@@ -23,9 +35,15 @@
         </p>
     </div>
 
-    <div>
-        <button id="saveForLater" class="button block block--size-half" type="button">Save for later</button>
-        <a href="mailto:?subject=See this donation!&body=It's great!" class="button block block--size-half">Tell your friends</a>
+    <div class="block block--type-row">
+        <div class="block block--type-block block--size-half">
+            <button id="saveForLater" class="button" type="button">Save for later</button>
+        </div>
+        <div class="block block--type-block block--size-half">
+            <a href="mailto:?subject=See this donation!&body=It's great!" class="button">Tell your friends</a>
+        </div>
+        
+        
     </div>
 
 </div>

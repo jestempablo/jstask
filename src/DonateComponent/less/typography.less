@@ -1,0 +1,22 @@
+a {
+    color:@blue;
+    text-decoration: none;
+    &:not(.button):hover {
+        text-decoration: underline;
+    }
+}
+
+strong {
+    font-weight:700;
+}
+
+.text {
+    &--color {
+        &-primary {
+            color:@primary;
+        }
+        &-secondary {
+            color:@secondary;
+        }
+    }
+}

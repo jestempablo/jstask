@@ -1,0 +1,26 @@
+.progress {
+    height:15px;
+    background:#eeeeee;
+    overflow: hidden;
+
+    .progress-bar {
+        position: relative;
+        height:15px;
+    }
+
+    &--color {
+        &-secondary {
+            .progress-bar {
+                background: @secondary;
+            }
+        }
+    }
+
+    &--type {
+        &-incard {
+            margin-left:-20px;
+            margin-right:-20px;
+            border-bottom: 1px solid @default-gray;
+        }
+    }
+}

@@ -1,3 +1,83 @@
+.form-item() {
+    display:inline-block;
+    margin:0;
+    border-width:1px;
+    border-style:solid;
+    border-color:#ccc;
+    width:100%;
+    padding:10px 5px;
+    border-radius:3px;
+}
+.form-item-lg() {
+    font-size:120%;
+    padding:15px 5px;
+}
+
+.input {
+    .form-item();
+    &--size-lg {
+        .form-item-lg();
+    }
+
+    ~ .invalid-feedback {
+        display:none;
+    }
+    
+    box-shadow:0 2px 0 #eee inset;
+    &:focus {
+        outline: none;
+        border-color:@blue;
+    }
+    &:invalid {
+        border-color:@red;
+        box-shadow: 0 0 0 1px @red;
+        & ~ .invalid-feedback {
+            color:@red;
+            display:block;
+        }
+    }
+    &--feedback {
+        &-dollar {
+            padding-left:28px;
+            //background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><text x="0" y="66%" font-size="24" fill="#aaaaaa">$</text></svg>');
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0ZXh0IHg9IjAiIHk9IjY2JSIgZm9udC1zaXplPSIyNCIgZmlsbD0iI2FhYWFhYSI+JDwvdGV4dD48L3N2Zz4=');
+            background-position: 10px top;
+            background-repeat: no-repeat;
+        }
+    }
+}
+
+.button-color(@color){
+    background: @color;
+    border-color: darken(@color, 5%);
+    color:@default-light;
+    &:hover {
+        background-color: lighten(@color,5%);
+    }
+}
+
 .button {
-    background: #0c0;
+    .form-item();
+    &--size-lg {
+        .form-item-lg();
+    }
+    color:darken(@default-gray,35%);
+    font-weight: 700;
+    cursor:pointer;
+    background-color:lighten(@default-gray,15%);
+    border-bottom-width: 2px;
+    text-align: center;
+
+    &:hover {
+        background-color: lighten(@default-gray,20%);
+    }
+    
+    &--color {
+        &-primary {
+            .button-color(@primary);
+        }
+        &-secondary {
+            .button-color(@secondary);
+        }
+    }
 }
