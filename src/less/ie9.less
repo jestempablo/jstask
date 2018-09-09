@@ -1,0 +1,26 @@
+body#ie9 {
+    .block--size-half:first-child {
+        float:left;
+    }
+    .block--size-half:last-child {
+        float:right;
+    }
+    
+    .block--size-full {
+        overflow:auto;
+    }
+    .block--size-full:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+    p {
+        clear:both;
+    }
+    .block--position-center {
+        position:absolute;
+        top:50%;
+        left:50%;
+        -ms-transform: translateX(-50%) translateY(-50%);
+    }
+}

@@ -14,7 +14,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
-            title:'JS Task'
+            template:'./src/index.html'
         }),
         new MiniCssExtractPlugin({
             filename: devEnv ? '[name].css' : '[name].[hash].css',
@@ -60,10 +60,10 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
+               // exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader?cacheDirectory',
-                    options: {
+                    loader: 'babel-loader',
+                    query: {
                         presets: ['@babel/preset-env']
                     }
                 }
@@ -72,7 +72,7 @@ module.exports = {
                 test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
                 use: [{
                     loader: 'file-loader',
-                    options: {
+                    query: {
                         name: '[name].[ext]',
                         outputPath: 'fonts/'
                     }

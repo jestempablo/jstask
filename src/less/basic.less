@@ -6,6 +6,7 @@
 @import './typography.less';
 @import './helpers.less';
 @import './progress.less';
+@import './ie9.less';
 
 @default-light: #fff;
 @default-dark: #424242;
@@ -25,8 +26,9 @@ html {
 
 body {
     height:100%;
+    display: -ms-flexbox;
+    align-items: center;
     display:flex;
-    font-family: 'PT Sans', sans-serif;
 }
 
 .card {
