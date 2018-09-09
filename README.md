@@ -16,6 +16,10 @@ Dist folder is included into repo, but you can build the project yourself.
   4. To build, navigate to project directory, run `npm install`, next `npm run build`, then manually open **dist/index.html**
   5. To run live development, navigate to project directory and run `npm start` command.
 
+####  How to run remotely aka. demo
+
+Visit [http://forynski.pl/jstask](http://forynski.pl/jstask)
+
 #### Tested on
 
   - Chrome 68
