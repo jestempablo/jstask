@@ -1,47 +1,79 @@
 import './DonateComponent.less';
 import template from './DonateComponent.html';
 
-(function DonateComponent() {
+window.donate = (function() {
 
-    var init,
-        updateProgress,
+    var updateProgress,
         giveNow,
         validateInput,
-        collapseOpen,
-        collapseClose,
-        saveForLater;
+        saveForLater,
+        elements = {},
+        GOAL = 500,
+        current = 57;
 
-    init = function() {
-        var componentElement = document.createElement('div');
-        document.body.appendChild(componentElement);
-        componentElement.outerHTML = template;
+    var componentElement = document.createElement('div');
+    document.body.appendChild(componentElement);
+    componentElement.outerHTML = template;
+
+
+    elements.giveForm = document.getElementById('giveForm');
+    elements.numberInput = document.getElementById('numberInput');
+    elements.saveForLater = document.getElementById('saveForLater');
+    elements.progressBar = document.getElementById('progressBar');
+    elements.progressValue = document.getElementById('progressValue');
+
+    elements.numberInput.value = localStorage.getItem('savedAmount') || 50;
+    
+    updateProgress = function(added){
+        current += parseInt(added);
+
+        var css = current > GOAL ? 0 : 'calc(100% - ('+current+'%/'+(GOAL/100)+'))';
+
+        elements.progressBar.style.right = css;
+        elements.progressValue.innerText = GOAL - current;
     }
 
-    updateProgress = function(){
-
+    giveNow = function(e){
+        e = e || window.event;
+        e.preventDefault();
+        if(e.target.checkValidity()){
+            updateProgress(elements.numberInput.value);
+            alert('Thank you for your donation!');
+        }
     }
 
-    giveNow = function(){
+    validateInput = function(e){
+        e = e || window.event;
 
-    }
-
-    validateInput = function(){
-
-    }
-
-    collapseOpen = function(){
-
-    }
-
-    collapseClose = function(){
-
+        var elem = e.target || elements.numberInput;
+        
+        if(isNaN(elem.value)){
+            elem.setCustomValidity("Must be a number!");
+            elem.reportValidity();
+        } else if (elem.value.indexOf('.') !== -1 && elem.value.split('.')[1].length>2) {
+            elem.setCustomValidity("No more than two decimal places!");
+            elem.reportValidity();
+        } else if (elem.value < 0) {
+            elem.setCustomValidity("Can't be negative!");
+            elem.reportValidity();
+        } else {
+            elem.setCustomValidity("");
+        }
     }
 
     saveForLater = function(){
-
+        if(!elements.giveForm.checkValidity()){
+            alert('Cannot save invalid amount!')
+        } else {
+            localStorage.setItem('savedAmount',elements.numberInput.value);
+            alert('Saved your input. See you soon!')
+        }
     }
 
-    return init;
+    return {
+        giveNow:giveNow,
+        validateInput:validateInput,
+        saveForLater:saveForLater
+    };
 
-    
-})()();
+})();

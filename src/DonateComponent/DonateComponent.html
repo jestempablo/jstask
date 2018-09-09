@@ -1,10 +1,10 @@
 <div id="donateComponent" class="item--position-center">
     <div class="tooltip tooltip--theme-dark">
-        <p><strong>$443</strong> still needed for this project</p>
+        <p>$<strong id="progressValue">443</strong> still needed for this project</p>
     </div>
     <div class="card">
         <div class="progress progress--color-secondary progress--type-incard">
-            <div class="progress-bar" style="right:calc(100% - (57%/5));"></div>
+            <div class="progress-bar" style="right:calc(100% - (57%/5));" id="progressBar"></div>
         </div>
         <p class="text">
             <strong class="text--color-secondary">Only 3 days left</strong> to fund this project.
@@ -12,14 +12,18 @@
         <p class="text">
             Join the <strong>42</strong> other donors who have already supported this project. Every dollar helps.
         </p>
-        <form id="giveForm" class="block block--type-row">
-            <div class="block block--type-block block--size-half">
-                <input id="numberInput" class="input input--size-lg input--type-half input--feedback-dollar" value="50" placeholder="0" type="phone"/>
+        <form id="giveForm" onsubmit="donate.giveNow(event)">
+            <div class="block block--type-row">
+                <div class="block block--type-block block--size-half">
+                    <input id="numberInput" 
+                        onkeyup="donate.validateInput(event)"
+                        class="input input--size-lg input--type-half input--feedback-dollar" 
+                        value="50" placeholder="0" type="phone" required/>
+                </div>
+                <div class="block block--type-block block--size-half">
+                    <button class="button button--size-lg button--color-primary " type="submit">Give now</button>
+                </div>
             </div>
-            <div class="block block--type-block block--size-half">
-                <button class="button button--size-lg button--color-primary " type="submit">Give now</button>
-            </div>
-            <div class="block block--type-block block--size-full invalid-feedback" id="validationFeedback"></div>
         </form>
         <p>
             <a href="#"><i><label for="collapsibleOpen" class="pointer">Why give $50?</label></i></a>
@@ -29,15 +33,19 @@
                 <strong class="pointer">&times;</strong>
             </label>
             <span class="collapsible collapsible--state-collapsed">
-                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar nibh ac sem mollis malesuada. In vestibulum,
-                odio et tristique finibus, ipsum enim cursus enim, sed pellentesque elit lorem eget felis.
+                <BR>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Pellentesque pulvinar nibh ac sem mollis malesuada. In vestibulum,
+                odio et tristique finibus, ipsum enim cursus enim, 
+                sed pellentesque elit lorem eget felis.
             </span>
         </p>
     </div>
 
     <div class="block block--type-row">
         <div class="block block--type-block block--size-half">
-            <button id="saveForLater" class="button" type="button">Save for later</button>
+            <button id="saveForLater" class="button" type="button"
+                    onclick="donate.saveForLater(event)">Save for later</button>
         </div>
         <div class="block block--type-block block--size-half">
             <a href="mailto:?subject=See this donation!&body=It's great!" class="button">Tell your friends</a>

@@ -4,6 +4,8 @@ const devEnv = process.env.NODE_ENV === 'development' || process.argv[1].indexOf
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const webpack = require('webpack');
 
 module.exports = {
@@ -20,6 +22,16 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin()
     ],
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true
+            }),
+            new OptimizeCSSAssetsPlugin({})
+        ]
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: devEnv ? './main.js' : './main.[hash].js'
@@ -34,9 +46,16 @@ module.exports = {
             {
                 test: /\.(le|c)ss$/,
                 use: [
-                    devEnv ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'less-loader',
+                    {
+                        loader: devEnv ? 'style-loader' : MiniCssExtractPlugin.loader
+                    },{
+                        loader: 'css-loader',
+                        query: {
+                            minimize: true
+                        }
+                    },{
+                        loader: 'less-loader'
+                    },
                 ],
             },
             {
@@ -48,6 +67,16 @@ module.exports = {
                         presets: ['@babel/preset-env']
                     }
                 }
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'fonts/'
+                    }
+                }]
             }
         ]
     },

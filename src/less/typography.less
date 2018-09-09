@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'PT Sans';
+    src: url('./../fonts/pt_sans_italic-webfont.woff2') format('woff2'),
+         url('./../fonts/pt_sans_italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+
+}
+
+@font-face {
+    font-family: 'PT Sans';
+    src: url('./../fonts/pt_sans_bold-webfont.woff2') format('woff2'),
+         url('./../fonts/pt_sans_bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'PT Sans';
+    src: url('./../fonts/pt_sans_regular-webfont.woff2') format('woff2'),
+         url('./../fonts/pt_sans_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family:'PT Sans';
+}
+
+
+a {
+    color:@blue;
+    text-decoration: none;
+    &:not(.button):hover {
+        text-decoration: underline;
+    }
+}
+
+strong {
+    font-weight:700;
+}
+
+.text {
+    &--color {
+        &-primary {
+            color:@primary;
+        }
+        &-secondary {
+            color:@secondary;
+        }
+    }
+}

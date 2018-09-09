@@ -1,9 +1,8 @@
 .collapsible {
     display:block;
     overflow: hidden;
-    transition: 500ms;
+    transition: 200ms;
     max-height:0;
-    opacity:0.5;
 }
 
 .collapsible-close {
@@ -12,9 +11,7 @@
 
 .collapsible-open:checked {
     & ~ .collapsible {
-        margin-top:10px;
-        max-height:500px;
-        opacity:1;
+        max-height:200px;
     }
     & ~ .collapsible-close {
         display:inline;
